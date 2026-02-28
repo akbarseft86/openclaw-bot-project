@@ -348,6 +348,8 @@ async def cmd_help(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
         "  /renamenote <no> <judul> — Ganti judul\n"
         "  /remind <waktu> <pesan> — Pengingat\n"
         "  /calc <expr> — Kalkulator\n"
+        "  /search <query> — Cari web (DuckDuckGo)\n"
+        "  /threads — List percakapan aktif\n"
         "  /trend — AI funnel trend research\n"
         "  /trend_full — Summary + JSON file\n"
         "  /trend_window — Fixed window research\n"
@@ -1344,6 +1346,49 @@ async def cmd_botinfo(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(info)
 
 
+# === SEARCH (DuckDuckGo) ======================================================
+async def cmd_search(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    """Search the web using DuckDuckGo."""
+    if not ctx.args:
+        await update.message.reply_text("Usage: /search <query>\nContoh: /search python telegram bot")
+        return
+    query = " ".join(ctx.args)
+    await update.message.chat.send_action("typing")
+    try:
+        from duckduckgo_search import DDGS
+        with DDGS() as ddgs:
+            results = list(ddgs.text(query, max_results=5))
+        if not results:
+            await update.message.reply_text("🔍 Tidak ada hasil untuk: " + query)
+            return
+        text = "🔍 Hasil pencarian: {}\n\n".format(query)
+        for i, r in enumerate(results, 1):
+            title = r.get("title", "No title")
+            href = r.get("href", "")
+            body = r.get("body", "")[:150]
+            text += "{}. {}\n{}\n{}\n\n".format(i, title, href, body)
+        await send_long(update, text)
+    except ImportError:
+        await update.message.reply_text("❌ duckduckgo-search belum terinstall.\nJalankan: pip install duckduckgo-search")
+    except Exception as e:
+        log.error("cmd_search error: %s", e)
+        await update.message.reply_text("❌ Search error: " + str(e))
+
+
+# === THREADS (conversation list) ==============================================
+async def cmd_threads(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+    """List active conversation threads."""
+    if not conversation_history:
+        await update.message.reply_text("📭 Belum ada thread percakapan aktif.")
+        return
+    text = "🧵 Active Threads\n\n"
+    for uid, msgs in conversation_history.items():
+        count = len(msgs)
+        last_msg = msgs[-1]["content"][:60] if msgs else "-"
+        text += "• User {}: {} pesan — terakhir: {}\n".format(uid, count, last_msg)
+    await send_long(update, text)
+
+
 # === CHAT MESSAGE HANDLER =====================================================
 async def handle_message(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     if not update.message or not update.message.text:
@@ -1386,7 +1431,9 @@ def main():
     app.add_handler(CommandHandler("remind", cmd_remind))
     app.add_handler(CommandHandler("calc", cmd_calc))
     app.add_handler(CommandHandler("curl", cmd_curl))
-    
+    app.add_handler(CommandHandler("search", cmd_search))
+    app.add_handler(CommandHandler("threads", cmd_threads))
+
     # Trend Research (TrendBotRouter — PRD-03)
     trend_router = TrendBotRouter(
         youtube_api_key=YOUTUBE_API_KEY,
