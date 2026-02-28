@@ -1,0 +1,2262 @@
+{
+  "agent:main:main": {
+    "origin": {
+      "label": "Akbar Nugraha (@akbarn86) id:231743189",
+      "provider": "telegram",
+      "surface": "telegram",
+      "chatType": "direct",
+      "from": "telegram:231743189",
+      "to": "telegram:231743189",
+      "accountId": "default"
+    },
+    "sessionId": "39533377-c925-410c-9810-f225a33ac403",
+    "updatedAt": 1770546444087,
+    "deliveryContext": {
+      "channel": "telegram",
+      "to": "telegram:231743189",
+      "accountId": "default"
+    },
+    "lastChannel": "telegram",
+    "lastTo": "telegram:231743189",
+    "lastAccountId": "default",
+    "systemSent": true,
+    "abortedLastRun": false,
+    "chatType": "direct",
+    "sessionFile": "/root/.openclaw/agents/main/sessions/39533377-c925-410c-9810-f225a33ac403.jsonl",
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-doc</name>\n    <description>Feishu document read/write operations. Activate when user mentions Feishu docs, cloud docs, or docx links.\n</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-doc/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-drive</name>\n    <description>Feishu cloud storage file management. Activate when user mentions cloud space, folders, drive.\n</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-drive/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-perm</name>\n    <description>Feishu permission management for documents and files. Activate when user mentions sharing, permissions, collaborators.\n</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-perm/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>feishu-wiki</name>\n    <description>Feishu knowledge base navigation. Activate when user mentions knowledge base, wiki, or wiki links.\n</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-wiki/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "feishu-doc"
+        },
+        {
+          "name": "feishu-drive"
+        },
+        {
+          "name": "feishu-perm"
+        },
+        {
+          "name": "feishu-wiki"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-doc",
+          "description": "Feishu document read/write operations. Activate when user mentions Feishu docs, cloud docs, or docx links.\n",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-doc/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-doc",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-drive",
+          "description": "Feishu cloud storage file management. Activate when user mentions cloud space, folders, drive.\n",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-drive/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-drive",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-perm",
+          "description": "Feishu permission management for documents and files. Activate when user mentions sharing, permissions, collaborators.\n",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-perm/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-perm",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "feishu-wiki",
+          "description": "Feishu knowledge base navigation. Activate when user mentions knowledge base, wiki, or wiki links.\n",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-wiki/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/extensions/feishu/skills/feishu-wiki",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "systemPromptReport": {
+      "source": "run",
+      "generatedAt": 1770546439826,
+      "sessionId": "39533377-c925-410c-9810-f225a33ac403",
+      "sessionKey": "agent:main:main",
+      "provider": "sumopod",
+      "model": "gpt-4.1-nano",
+      "workspaceDir": "/root/.openclaw/workspace",
+      "bootstrapMaxChars": 20000,
+      "sandbox": {
+        "mode": "off",
+        "sandboxed": false
+      },
+      "systemPrompt": {
+        "chars": 19649,
+        "projectContextChars": 6273,
+        "nonProjectContextChars": 13376
+      },
+      "injectedWorkspaceFiles": [
+        {
+          "name": "AGENTS.md",
+          "path": "/root/.openclaw/workspace/AGENTS.md",
+          "missing": false,
+          "rawChars": 709,
+          "injectedChars": 709,
+          "truncated": false
+        },
+        {
+          "name": "SOUL.md",
+          "path": "/root/.openclaw/workspace/SOUL.md",
+          "missing": false,
+          "rawChars": 1664,
+          "injectedChars": 1664,
+          "truncated": false
+        },
+        {
+          "name": "TOOLS.md",
+          "path": "/root/.openclaw/workspace/TOOLS.md",
+          "missing": false,
+          "rawChars": 850,
+          "injectedChars": 850,
+          "truncated": false
+        },
+        {
+          "name": "IDENTITY.md",
+          "path": "/root/.openclaw/workspace/IDENTITY.md",
+          "missing": false,
+          "rawChars": 632,
+          "injectedChars": 632,
+          "truncated": false
+        },
+        {
+          "name": "USER.md",
+          "path": "/root/.openclaw/workspace/USER.md",
+          "missing": false,
+          "rawChars": 478,
+          "injectedChars": 478,
+          "truncated": false
+        },
+        {
+          "name": "HEARTBEAT.md",
+          "path": "/root/.openclaw/workspace/HEARTBEAT.md",
+          "missing": false,
+          "rawChars": 167,
+          "injectedChars": 167,
+          "truncated": false
+        },
+        {
+          "name": "BOOTSTRAP.md",
+          "path": "/root/.openclaw/workspace/BOOTSTRAP.md",
+          "missing": false,
+          "rawChars": 1449,
+          "injectedChars": 1449,
+          "truncated": false
+        }
+      ],
+      "skills": {
+        "promptChars": 4477,
+        "entries": [
+          {
+            "name": "qqbot-cron",
+            "blockChars": 212
+          },
+          {
+            "name": "qqbot-media",
+            "blockChars": 194
+          },
+          {
+            "name": "feishu-doc",
+            "blockChars": 315
+          },
+          {
+            "name": "feishu-drive",
+            "blockChars": 307
+          },
+          {
+            "name": "feishu-perm",
+            "blockChars": 329
+          },
+          {
+            "name": "feishu-wiki",
+            "blockChars": 309
+          },
+          {
+            "name": "clawhub",
+            "blockChars": 452
+          },
+          {
+            "name": "healthcheck",
+            "blockChars": 511
+          },
+          {
+            "name": "openai-image-gen",
+            "blockChars": 292
+          },
+          {
+            "name": "openai-whisper-api",
+            "blockChars": 269
+          },
+          {
+            "name": "skill-creator",
+            "blockChars": 316
+          },
+          {
+            "name": "weather",
+            "blockChars": 240
+          },
+          {
+            "name": "Agent Browser",
+            "blockChars": 326
+          }
+        ]
+      },
+      "tools": {
+        "listChars": 2258,
+        "schemaChars": 16128,
+        "entries": [
+          {
+            "name": "read",
+            "summaryChars": 298,
+            "schemaChars": 392,
+            "propertiesCount": 4
+          },
+          {
+            "name": "edit",
+            "summaryChars": 129,
+            "schemaChars": 591,
+            "propertiesCount": 6
+          },
+          {
+            "name": "write",
+            "summaryChars": 127,
+            "schemaChars": 313,
+            "propertiesCount": 3
+          },
+          {
+            "name": "exec",
+            "summaryChars": 181,
+            "schemaChars": 1037,
+            "propertiesCount": 12
+          },
+          {
+            "name": "process",
+            "summaryChars": 85,
+            "schemaChars": 844,
+            "propertiesCount": 11
+          },
+          {
+            "name": "browser",
+            "summaryChars": 1251,
+            "schemaChars": 1869,
+            "propertiesCount": 28
+          },
+          {
+            "name": "canvas",
+            "summaryChars": 106,
+            "schemaChars": 661,
+            "propertiesCount": 18
+          },
+          {
+            "name": "nodes",
+            "summaryChars": 101,
+            "schemaChars": 1479,
+            "propertiesCount": 33
+          },
+          {
+            "name": "cron",
+            "summaryChars": 2444,
+            "schemaChars": 581,
+            "propertiesCount": 13
+          },
+          {
+            "name": "message",
+            "summaryChars": 118,
+            "schemaChars": 3921,
+            "propertiesCount": 84
+          },
+          {
+            "name": "tts",
+            "summaryChars": 129,
+            "schemaChars": 223,
+            "propertiesCount": 2
+          },
+          {
+            "name": "gateway",
+            "summaryChars": 225,
+            "schemaChars": 465,
+            "propertiesCount": 11
+          },
+          {
+            "name": "agents_list",
+            "summaryChars": 72,
+            "schemaChars": 33,
+            "propertiesCount": 0
+          },
+          {
+            "name": "sessions_list",
+            "summaryChars": 54,
+            "schemaChars": 176,
+            "propertiesCount": 4
+          },
+          {
+            "name": "sessions_history",
+            "summaryChars": 36,
+            "schemaChars": 149,
+            "propertiesCount": 3
+          },
+          {
+            "name": "sessions_send",
+            "summaryChars": 84,
+            "schemaChars": 203,
+            "propertiesCount": 5
+          },
+          {
+            "name": "sessions_spawn",
+            "summaryChars": 107,
+            "schemaChars": 312,
+            "propertiesCount": 8
+          },
+          {
+            "name": "session_status",
+            "summaryChars": 207,
+            "schemaChars": 89,
+            "propertiesCount": 2
+          },
+          {
+            "name": "web_search",
+            "summaryChars": 175,
+            "schemaChars": 733,
+            "propertiesCount": 6
+          },
+          {
+            "name": "web_fetch",
+            "summaryChars": 129,
+            "schemaChars": 360,
+            "propertiesCount": 3
+          },
+          {
+            "name": "image",
+            "summaryChars": 118,
+            "schemaChars": 163,
+            "propertiesCount": 4
+          },
+          {
+            "name": "memory_search",
+            "summaryChars": 147,
+            "schemaChars": 470,
+            "propertiesCount": 4
+          },
+          {
+            "name": "memory_store",
+            "summaryChars": 127,
+            "schemaChars": 419,
+            "propertiesCount": 4
+          },
+          {
+            "name": "memory_get",
+            "summaryChars": 47,
+            "schemaChars": 127,
+            "propertiesCount": 1
+          },
+          {
+            "name": "memory_list",
+            "summaryChars": 147,
+            "schemaChars": 332,
+            "propertiesCount": 2
+          },
+          {
+            "name": "memory_forget",
+            "summaryChars": 141,
+            "schemaChars": 186,
+            "propertiesCount": 2
+          }
+        ]
+      }
+    },
+    "inputTokens": 202,
+    "outputTokens": 21,
+    "totalTokens": 46410,
+    "compactionCount": 13,
+    "memoryFlushAt": 1770540399953,
+    "memoryFlushCompactionCount": 13
+  },
+  "agent:main:openai:66ef6997-c312-4ea6-835e-97f994762c68": {
+    "sessionId": "8cf05f4b-d94d-41f1-bbb3-bda265010b04",
+    "updatedAt": 1770587202172,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 8916,
+    "outputTokens": 3,
+    "totalTokens": 8916
+  },
+  "agent:main:openai:e9479ce7-ae8c-477d-b26b-24f4e4a2838e": {
+    "sessionId": "c5d00b88-7e46-4007-bd6c-c28b3b94afbe",
+    "updatedAt": 1770587702583,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 126,
+    "outputTokens": 7,
+    "totalTokens": 8958
+  },
+  "agent:main:openai-user:telegram-231743189": {
+    "sessionId": "8f824660-0610-4eb3-8439-4e6051a2a0c2",
+    "updatedAt": 1770714385002,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-vetting</name>\n    <description>Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.</description>\n    <location>/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "skill-vetting"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-vetting",
+          "description": "Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.",
+          "filePath": "/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md",
+          "baseDir": "/root/.openclaw/skills/eddygk/skill-vetting",
+          "source": "openclaw-managed",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "deliveryContext": {
+      "channel": "webchat"
+    },
+    "lastChannel": "webchat",
+    "channel": "webchat",
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 24550,
+    "outputTokens": 19,
+    "totalTokens": 24550
+  },
+  "agent:main:openai:350f3fd5-7a5f-4e6e-8dd4-d4387e9ee1b4": {
+    "sessionId": "0711351a-1f9f-4d2c-927c-aad76d48af18",
+    "updatedAt": 1770617653182,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 8925,
+    "outputTokens": 19,
+    "totalTokens": 8925
+  },
+  "agent:main:openai:2deac19e-a31b-44c7-b039-fc3c430b5784": {
+    "sessionId": "19ba46ee-ca06-41db-ab3a-b9070eb77079",
+    "updatedAt": 1770618713289,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 8925,
+    "outputTokens": 26,
+    "totalTokens": 8925
+  },
+  "agent:main:openai:23427d17-4173-474a-a53e-8a48029ac464": {
+    "sessionId": "f9f45d5d-4f20-4ac0-a2f0-852523f4da91",
+    "updatedAt": 1770634214109,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 125,
+    "outputTokens": 3,
+    "totalTokens": 8957
+  },
+  "agent:main:openai:d4351bdb-6d87-4a8b-9613-82421b121c3e": {
+    "sessionId": "49df2029-c8b6-4c1c-bd95-1e5013bb79f3",
+    "updatedAt": 1770634246779,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 88,
+    "outputTokens": 21,
+    "totalTokens": 8920
+  },
+  "agent:main:openai:1cf08e97-c8ab-4e89-b4ea-bd755482abdb": {
+    "sessionId": "fc251031-ce93-4b4f-af12-a3014b6e9159",
+    "updatedAt": 1771242163156,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-vetting</name>\n    <description>Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.</description>\n    <location>/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "skill-vetting"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-vetting",
+          "description": "Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.",
+          "filePath": "/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md",
+          "baseDir": "/root/.openclaw/skills/eddygk/skill-vetting",
+          "source": "openclaw-managed",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 9004,
+    "outputTokens": 10,
+    "totalTokens": 9004
+  },
+  "agent:main:openai:a713bc07-9414-4c0f-81e0-7f476fa4b6b1": {
+    "sessionId": "97c14ae6-b606-48e7-9d17-3c3e63178db3",
+    "updatedAt": 1771250637786,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-vetting</name>\n    <description>Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.</description>\n    <location>/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "skill-vetting"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-vetting",
+          "description": "Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.",
+          "filePath": "/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md",
+          "baseDir": "/root/.openclaw/skills/eddygk/skill-vetting",
+          "source": "openclaw-managed",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 9011,
+    "outputTokens": 44,
+    "totalTokens": 9011
+  },
+  "agent:main:openai:5ef04d2b-f7ea-4793-9524-e9e77c8a1700": {
+    "sessionId": "c84fc06f-482d-417b-a43b-7999a6202265",
+    "updatedAt": 1771250818076,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts (no API key required).</description>\n    <location>/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-vetting</name>\n    <description>Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.</description>\n    <location>/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>/root/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>/root/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "skill-vetting"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts (no API key required).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-vetting",
+          "description": "Vet ClawHub skills for security and utility before installation. Use when considering installing a ClawHub skill, evaluating third-party code, or assessing whether a skill adds value over existing tools.",
+          "filePath": "/root/.openclaw/skills/eddygk/skill-vetting/SKILL.md",
+          "baseDir": "/root/.openclaw/skills/eddygk/skill-vetting",
+          "source": "openclaw-managed",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 478,
+    "outputTokens": 38,
+    "totalTokens": 9438
+  },
+  "agent:main:openai:224ae346-d6a0-436d-bae4-9a7cc1ca869c": {
+    "sessionId": "4ee41ae7-e251-4719-8f30-6b0ec891fc5d",
+    "updatedAt": 1772269108821,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>~/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>~/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts via wttr.in or Open-Meteo. Use when: user asks about weather, temperature, or forecasts for any location. NOT for: historical weather data, severe weather alerts, or detailed meteorological analysis. No API key needed.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>~/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>content-automation</name>\n    <description>Generate konten organik untuk personal brand Akbar Nugraha sebagai Marketing Funnel Expert. Bisa generate Threads post, carousel brief, dan Reels script. Semua output disesuaikan dengan tone casual data-driven dan audiens pemula Indonesia.</description>\n    <location>~/.openclaw/workspace/skills/content-automation/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>~/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>~/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "content-automation"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts via wttr.in or Open-Meteo. Use when: user asks about weather, temperature, or forecasts for any location. NOT for: historical weather data, severe weather alerts, or detailed meteorological analysis. No API key needed.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "content-automation",
+          "description": "Generate konten organik untuk personal brand Akbar Nugraha sebagai Marketing Funnel Expert. Bisa generate Threads post, carousel brief, dan Reels script. Semua output disesuaikan dengan tone casual data-driven dan audiens pemula Indonesia.",
+          "filePath": "/root/.openclaw/workspace/skills/content-automation/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/content-automation",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 9637,
+    "outputTokens": 6,
+    "totalTokens": 9637,
+    "totalTokensFresh": true
+  },
+  "agent:main:openai:91442a68-da53-497c-8d3d-ff41f0e82ff3": {
+    "sessionId": "4f2455ed-8b3a-4081-975d-01440c4e599a",
+    "updatedAt": 1772287473377,
+    "skillsSnapshot": {
+      "prompt": "\n\nThe following skills provide specialized instructions for specific tasks.\nUse the read tool to load a skill's file when the task matches its description.\nWhen a skill file references a relative path, resolve it against the skill directory (parent of SKILL.md / dirname of the path) and use that absolute path in tool commands.\n\n<available_skills>\n  <skill>\n    <name>qqbot-cron</name>\n    <description>QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。</description>\n    <location>~/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>qqbot-media</name>\n    <description>QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。</description>\n    <location>~/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>clawhub</name>\n    <description>Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>healthcheck</name>\n    <description>Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-image-gen</name>\n    <description>Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>openai-whisper-api</name>\n    <description>Transcribe audio via OpenAI Audio Transcriptions API (Whisper).</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>skill-creator</name>\n    <description>Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>weather</name>\n    <description>Get current weather and forecasts via wttr.in or Open-Meteo. Use when: user asks about weather, temperature, or forecasts for any location. NOT for: historical weather data, severe weather alerts, or detailed meteorological analysis. No API key needed.</description>\n    <location>~/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>Agent Browser</name>\n    <description>A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.</description>\n    <location>~/.openclaw/workspace/skills/agent-browser/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>content-automation</name>\n    <description>Generate konten organik untuk personal brand Akbar Nugraha sebagai Marketing Funnel Expert. Bisa generate Threads post, carousel brief, dan Reels script. Semua output disesuaikan dengan tone casual data-driven dan audiens pemula Indonesia.</description>\n    <location>~/.openclaw/workspace/skills/content-automation/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>deepread</name>\n    <description>AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.</description>\n    <location>~/.openclaw/workspace/skills/deepread-ocr/SKILL.md</location>\n  </skill>\n  <skill>\n    <name>image-ocr</name>\n    <description>Extract text from images using Tesseract OCR</description>\n    <location>~/.openclaw/workspace/skills/image-ocr/SKILL.md</location>\n  </skill>\n</available_skills>",
+      "skills": [
+        {
+          "name": "qqbot-cron"
+        },
+        {
+          "name": "qqbot-media"
+        },
+        {
+          "name": "clawhub"
+        },
+        {
+          "name": "healthcheck"
+        },
+        {
+          "name": "openai-image-gen",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "openai-whisper-api",
+          "primaryEnv": "OPENAI_API_KEY"
+        },
+        {
+          "name": "skill-creator"
+        },
+        {
+          "name": "weather"
+        },
+        {
+          "name": "Agent Browser"
+        },
+        {
+          "name": "content-automation"
+        },
+        {
+          "name": "deepread"
+        },
+        {
+          "name": "image-ocr"
+        }
+      ],
+      "resolvedSkills": [
+        {
+          "name": "qqbot-cron",
+          "description": "QQ Bot 智能提醒技能。支持一次性提醒、周期性任务、自动降级确保送达。可设置、查询、取消提醒。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-cron",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "qqbot-media",
+          "description": "QQ Bot 媒体发送指南。教 AI 如何发送图片给用户。",
+          "filePath": "/root/.openclaw/extensions/qqbot/skills/qqbot-media/SKILL.md",
+          "baseDir": "/root/.openclaw/extensions/qqbot/skills/qqbot-media",
+          "source": "openclaw-extra",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "clawhub",
+          "description": "Use the ClawHub CLI to search, install, update, and publish agent skills from clawhub.com. Use when you need to fetch new skills on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with the npm-installed clawhub CLI.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/clawhub",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "healthcheck",
+          "description": "Host security hardening and risk-tolerance configuration for OpenClaw deployments. Use when a user asks for security audits, firewall/SSH/update hardening, risk posture, exposure review, OpenClaw cron scheduling for periodic checks, or version status checks on a machine running OpenClaw (laptop, workstation, Pi, VPS).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/healthcheck",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-image-gen",
+          "description": "Batch-generate images via OpenAI Images API. Random prompt sampler + `index.html` gallery.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-image-gen",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "openai-whisper-api",
+          "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper).",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/openai-whisper-api",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "skill-creator",
+          "description": "Create or update AgentSkills. Use when designing, structuring, or packaging skills with scripts, references, and assets.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/skill-creator",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "weather",
+          "description": "Get current weather and forecasts via wttr.in or Open-Meteo. Use when: user asks about weather, temperature, or forecasts for any location. NOT for: historical weather data, severe weather alerts, or detailed meteorological analysis. No API key needed.",
+          "filePath": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather/SKILL.md",
+          "baseDir": "/root/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/skills/weather",
+          "source": "openclaw-bundled",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "Agent Browser",
+          "description": "A fast Rust-based headless browser automation CLI with Node.js fallback that enables AI agents to navigate, click, type, and snapshot pages via structured commands.",
+          "filePath": "/root/.openclaw/workspace/skills/agent-browser/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/agent-browser",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "content-automation",
+          "description": "Generate konten organik untuk personal brand Akbar Nugraha sebagai Marketing Funnel Expert. Bisa generate Threads post, carousel brief, dan Reels script. Semua output disesuaikan dengan tone casual data-driven dan audiens pemula Indonesia.",
+          "filePath": "/root/.openclaw/workspace/skills/content-automation/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/content-automation",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "deepread",
+          "description": "AI-native OCR platform that turns documents into high-accuracy data in minutes. Using multi-model consensus, DeepRead achieves 95%+ accuracy and flags only uncertain fields for review—reducing manual work from 100% to 5-10%. Zero prompt engineering required.",
+          "filePath": "/root/.openclaw/workspace/skills/deepread-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/deepread-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        },
+        {
+          "name": "image-ocr",
+          "description": "Extract text from images using Tesseract OCR",
+          "filePath": "/root/.openclaw/workspace/skills/image-ocr/SKILL.md",
+          "baseDir": "/root/.openclaw/workspace/skills/image-ocr",
+          "source": "openclaw-workspace",
+          "disableModelInvocation": false
+        }
+      ],
+      "version": 0
+    },
+    "modelProvider": "sumopod",
+    "model": "gpt-4.1-nano",
+    "contextTokens": 200000,
+    "abortedLastRun": false,
+    "inputTokens": 9993,
+    "outputTokens": 100,
+    "totalTokens": 9822,
+    "totalTokensFresh": true
+  }
+}

@@ -1,0 +1,6 @@
+{"type":"session","version":3,"id":"8cf05f4b-d94d-41f1-bbb3-bda265010b04","timestamp":"2026-02-08T21:46:41.237Z","cwd":"/root/.openclaw/workspace"}
+{"type":"model_change","id":"d75b94e2","parentId":null,"timestamp":"2026-02-08T21:46:41.243Z","provider":"sumopod","modelId":"gpt-4.1-nano"}
+{"type":"thinking_level_change","id":"7661b6de","parentId":"d75b94e2","timestamp":"2026-02-08T21:46:41.243Z","thinkingLevel":"off"}
+{"type":"custom","customType":"model-snapshot","data":{"timestamp":1770587201249,"provider":"sumopod","modelApi":"openai-completions","modelId":"gpt-4.1-nano"},"id":"46384b0e","parentId":"7661b6de","timestamp":"2026-02-08T21:46:41.249Z"}
+{"type":"message","id":"71a4ec57","parentId":"46384b0e","timestamp":"2026-02-08T21:46:41.270Z","message":{"role":"user","content":[{"type":"text","text":"test"}],"timestamp":1770587201260}}
+{"type":"message","id":"a1b7b4ea","parentId":"71a4ec57","timestamp":"2026-02-08T21:46:41.983Z","message":{"role":"assistant","content":[{"type":"text","text":"NO_REPLY"}],"api":"openai-completions","provider":"sumopod","model":"gpt-4.1-nano","usage":{"input":8916,"output":3,"cacheRead":0,"cacheWrite":0,"totalTokens":8919,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"stop","timestamp":1770587201266}}

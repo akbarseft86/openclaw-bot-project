@@ -1,0 +1,6 @@
+{"type":"session","version":3,"id":"49df2029-c8b6-4c1c-bd95-1e5013bb79f3","timestamp":"2026-02-09T10:50:42.993Z","cwd":"/root/.openclaw/workspace"}
+{"type":"model_change","id":"c50e02a1","parentId":null,"timestamp":"2026-02-09T10:50:42.993Z","provider":"sumopod","modelId":"gpt-4.1-nano"}
+{"type":"thinking_level_change","id":"fb8038a1","parentId":"c50e02a1","timestamp":"2026-02-09T10:50:42.993Z","thinkingLevel":"off"}
+{"type":"custom","customType":"model-snapshot","data":{"timestamp":1770634242997,"provider":"sumopod","modelApi":"openai-completions","modelId":"gpt-4.1-nano"},"id":"26b12988","parentId":"fb8038a1","timestamp":"2026-02-09T10:50:42.997Z"}
+{"type":"message","id":"59d188fc","parentId":"26b12988","timestamp":"2026-02-09T10:50:45.237Z","message":{"role":"user","content":[{"type":"text","text":"halo apa kabar?"}],"timestamp":1770634245235}}
+{"type":"message","id":"3df5fff2","parentId":"59d188fc","timestamp":"2026-02-09T10:50:46.765Z","message":{"role":"assistant","content":[{"type":"text","text":"Saya baik, terima kasih. Bagaimana denganmu? Ada yang bisa saya bantu hari ini?"}],"api":"openai-completions","provider":"sumopod","model":"gpt-4.1-nano","usage":{"input":88,"output":21,"cacheRead":8832,"cacheWrite":0,"totalTokens":8941,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"stop","timestamp":1770634245236}}

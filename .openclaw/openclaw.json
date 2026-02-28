@@ -1,0 +1,245 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.6-3",
+    "lastTouchedAt": "2026-02-08T10:11:58.448Z"
+  },
+  "models": {
+    "providers": {
+      "deepseek": {
+        "baseUrl": "https://api.deepseek.com/v1",
+        "apiKey": "sk-72e5d53c4468437687d5f3afe383b3b0",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "deepseek-chat",
+            "name": "DeepSeek Chat",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 64000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "sumopod": {
+        "baseUrl": "https://ai.sumopod.com/v1",
+        "apiKey": "sk-OEQrtl_iYyey-IVy5BTmfQ",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "gpt-4.1-nano",
+            "name": "GPT 4.1 Nano",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "gpt-5.1-codex-mini",
+            "name": "GPT 5.1 Codex Mini",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "seed-2-0-mini-free",
+            "name": "Seed 2.0 Mini (FREE)",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "gpt-5-nano",
+            "name": "GPT-5 Nano",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.05,
+              "output": 0.4,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 272000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-v3-2",
+            "name": "DeepSeek V3.2",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.28,
+              "output": 0.42,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 96000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "ark-kimi": {
+        "baseUrl": "https://ark.ap-southeast.bytepluses.com/api/v3",
+        "apiKey": "aa2f56e1-3a25-4e32-b27b-dc0e7f8da1d1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-k2-250905",
+            "name": "Kimi K2",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "ark-glm": {
+        "baseUrl": "https://ark.ap-southeast.bytepluses.com/api/v3",
+        "apiKey": "1f11c03a-b90f-4225-8084-d132994f0dfe",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "glm-4-7-251222",
+            "name": "GLM-4",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "sumopod/gpt-4.1-nano"
+      },
+      "models": {
+        "deepseek/deepseek-chat": {},
+        "sumopod/gpt-4.1-nano": {
+          "params": {
+            "temperature": 0.3
+          }
+        },
+        "ark-kimi/kimi-k2-250905": {},
+        "ark-glm/glm-4-7-251222": {},
+        "sumopod/seed-2-0-mini-free": {},
+        "sumopod/gpt-5-nano": {},
+        "sumopod/deepseek-v3-2": {}
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "compaction": {
+        "mode": "safeguard"
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8267317513:AAEJP_an1LSOq4N6oDn-YP9nnH0FpP5ol0M",
+      "groupPolicy": "allowlist",
+      "streamMode": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "6b833e046e3c2f36b9aae4c5134ee56bdf4a9a04dc1f054d"
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "plugins": {
+    "slots": {
+      "memory": "openclaw-mem0"
+    },
+    "entries": {
+      "openclaw-mem0": {
+        "enabled": true,
+        "config": {
+          "apiKey": "m0-e7EqV021oe9NK6ALPdAVSfV8hhl1cdQSD06gLnzR",
+          "userId": "akbar-nugraha"
+        }
+      },
+      "telegram": {
+        "enabled": false
+      },
+      "memory-core": {
+        "enabled": false
+      }
+    }
+  }
+}

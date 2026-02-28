@@ -1,0 +1,6 @@
+{"type":"session","version":3,"id":"fc251031-ce93-4b4f-af12-a3014b6e9159","timestamp":"2026-02-16T11:42:39.814Z","cwd":"/root/.openclaw/workspace"}
+{"type":"model_change","id":"41cbfb2b","parentId":null,"timestamp":"2026-02-16T11:42:39.819Z","provider":"sumopod","modelId":"gpt-4.1-nano"}
+{"type":"thinking_level_change","id":"349d81a7","parentId":"41cbfb2b","timestamp":"2026-02-16T11:42:39.819Z","thinkingLevel":"off"}
+{"type":"custom","customType":"model-snapshot","data":{"timestamp":1771242159826,"provider":"sumopod","modelApi":"openai-completions","modelId":"gpt-4.1-nano"},"id":"2734e727","parentId":"349d81a7","timestamp":"2026-02-16T11:42:39.826Z"}
+{"type":"message","id":"5e3519c2","parentId":"2734e727","timestamp":"2026-02-16T11:42:42.325Z","message":{"role":"user","content":[{"type":"text","text":"hello"}],"timestamp":1771242162315}}
+{"type":"message","id":"04b1e7d6","parentId":"5e3519c2","timestamp":"2026-02-16T11:42:43.133Z","message":{"role":"assistant","content":[{"type":"text","text":"Hello! How can I assist you today?"}],"api":"openai-completions","provider":"sumopod","model":"gpt-4.1-nano","usage":{"input":9004,"output":10,"cacheRead":0,"cacheWrite":0,"totalTokens":9014,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"stop","timestamp":1771242162321}}

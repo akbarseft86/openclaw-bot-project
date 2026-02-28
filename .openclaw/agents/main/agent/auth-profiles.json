@@ -1,0 +1,10 @@
+{
+  "openai": {
+    "apiKey": "sk-72e5d53c4468437687d5f3afe383b3b0",
+    "baseUrl": "https://api.deepseek.com/v1"
+  },
+  "sumopod": {
+    "apiKey": "sk-OEQrtl_iYyey-IVy5BTmfQ",
+    "baseUrl": "https://ai.sumopod.com/v1"
+  }
+}
