@@ -4,7 +4,7 @@ description: End-to-end workflow untuk scrape, analisis, dan repurpose konten Th
 compatibility: Membutuhkan tool web_fetch. Jika Threads sulit di-scrape, butuh Browser Automation (Managed/Relay/Extension) yang tersedia di environment OpenClaw.
 metadata:
   author: akbar
-  version: 2.0.0
+  version: 2.1.0
   category: content
   tags: [threads, research, analysis, repurpose, content-strategy, self-evolving]
 ---
@@ -61,6 +61,23 @@ Jika user tidak jawab, pakai default aman:
 - topik: minta user isi (minimal 1 topik)
 
 ---
+
+# ATURAN TOKEN SAFETY (WAJIB DIPATUHI)
+
+> **PRIORITAS #1: FILE WRITE > CHAT OUTPUT**
+>
+> Di setiap step yang menghasilkan output panjang:
+> 1. **TULIS KE FILE DULU** — selesaikan semua file write sebelum output ke chat
+> 2. **Knowledge update WAJIB DULUAN** — append ke research-knowledge.md SEBELUM output apapun ke chat
+> 3. **Chat output TERAKHIR** — hanya setelah semua file write sukses
+> 4. **Chat output RINGKAS** — maksimal 15 baris per step, jangan dump seluruh analisis ke chat
+>
+> **ALASAN:** LLM punya batas output token. Jika chat output ditulis duluan dan terlalu panjang,
+> file write di akhir akan terpotong/gagal. Ini menyebabkan knowledge base tidak terupdate.
+>
+> **CHECKPOINT:** Setelah setiap step, konfirmasi singkat ke user:
+> `[✓ Step N selesai — file: {nama_file}]`
+> Jika step gagal di tengah jalan, user bisa minta lanjut dari step terakhir yang sukses.
 
 # Workflow Utama (Wajib Ikuti Urutan)
 
@@ -154,7 +171,13 @@ Output ke chat:
 
 ---
 
-## STEP 3 — DEEP ANALYSIS (Session 1: Pilar Topik)
+## STEP 3–8 — DEEP ANALYSIS (6 Sesi, Simpan ke File)
+
+> **TOKEN SAFETY:** Semua hasil analisis Step 3–8 WAJIB ditulis ke file `analysis_notes.md`
+> (append per section). Chat output cukup konfirmasi singkat per step.
+> Ini mencegah output terpotong karena token limit.
+
+### STEP 3 — Pilar Topik (Session 1)
 
 Baca `threads_dump.md`.
 
@@ -162,49 +185,51 @@ Tugas:
 - Kelompokkan 5–10 tema/pilar konten yang paling sering muncul.
 - Untuk tiap tema:
   1) Ringkasan 1–2 kalimat
-  2) 3 kutipan singkat (<= 20 kata) yang diambil dari post sebagai bukti
+  2) 3 kutipan singkat (<= 20 kata) dari post sebagai bukti
   3) Catatan: "kenapa tema ini penting" (1 kalimat)
 
-Output dalam Markdown dengan heading yang rapi.
-Jangan bahas hook/tone dulu—fokus tema saja.
+**Simpan hasil ke file:** Append ke `analysis_notes.md` dengan heading `## Pilar Topik`
+**Output ke chat:** `[✓ Step 3 selesai]` + sebutkan 3 pilar teratas (1 baris per pilar)
 
 ---
 
-## STEP 4 — DEEP ANALYSIS (Session 2: Pain Points / Tension Audience)
+### STEP 4 — Pain Points / Tension (Session 2)
 
 Baca `threads_dump.md`.
 
 Tugas:
-- Infer pain points / tension / problem yang sering disinggung (tersurat atau tersirat).
-- Buat 6–10 "problem statements" yang bisa dipakai untuk positioning.
+- Infer pain points / tension / problem (tersurat atau tersirat).
+- Buat 6–10 "problem statements" untuk positioning.
 - Untuk tiap problem statement:
-  - Bukti: 2 kutipan singkat dari dump (<= 20 kata)
-  - Catatan: siapa yang paling relate (persona singkat)
+  - Bukti: 2 kutipan singkat (<= 20 kata)
+  - Persona: siapa yang paling relate
   - Dampak: "kalau ini tidak selesai, apa risikonya" (1 kalimat)
 
 Jangan bikin asumsi di luar isi dump. Kalau bukti lemah, tulis "low confidence".
 
+**Simpan hasil ke file:** Append ke `analysis_notes.md` dengan heading `## Pain Points`
+**Output ke chat:** `[✓ Step 4 selesai]` + sebutkan 3 pain point teratas (1 baris per item)
+
 ---
 
-## STEP 5 — DEEP ANALYSIS (Session 3: Emotional Triggers & Beliefs)
+### STEP 5 — Emotional Triggers & Beliefs (Session 3)
 
 Baca `threads_dump.md`.
 
 Tugas:
-- Identifikasi emosi dominan yang muncul (min 6 emosi).
-- Identifikasi belief/opini khas (min 8) — termasuk yang "kontra arus" jika ada.
-- Untuk tiap emosi:
-  - 2 kutipan bukti (<= 20 kata)
-  - "trigger" yang memicunya (1 kalimat)
-- Untuk tiap belief:
-  - 1 kutipan bukti
-  - "implikasi ke konten": angle apa yang cocok (1 kalimat)
+- Identifikasi emosi dominan (min 6 emosi).
+- Identifikasi belief/opini khas (min 8) — termasuk "kontra arus".
+- Untuk tiap emosi: 2 kutipan bukti + trigger (1 kalimat)
+- Untuk tiap belief: 1 kutipan bukti + "implikasi ke konten" (1 kalimat)
 
 Fokus pada "apa yang dia percaya" dan "apa yang dia lawan".
 
+**Simpan hasil ke file:** Append ke `analysis_notes.md` dengan heading `## Emotional Triggers & Beliefs`
+**Output ke chat:** `[✓ Step 5 selesai]` + sebutkan 3 emosi/belief terkuat
+
 ---
 
-## STEP 6 — DEEP ANALYSIS (Session 4: Hook Library Builder)
+### STEP 6 — Hook Library Builder (Session 4)
 
 Baca `threads_dump.md`.
 
@@ -213,69 +238,60 @@ Tugas:
 - Untuk tiap pola hook:
   1) Template umum (format: "Kalau kamu ___, berhenti ___")
   2) 1 contoh pembuka asli (kutipan <= 20 kata)
-  3) Kapan dipakai (use-case: edukasi, kontroversi, curhat, tutorial, dsb.)
+  3) Kapan dipakai (edukasi, kontroversi, curhat, tutorial, dsb.)
 
-Catatan:
-- Jangan copy isi full post.
-- Tujuan: bikin "hook patterns" yang bisa direplikasi untuk topik lain.
+Jangan copy isi full post. Tujuan: bikin "hook patterns" replicable.
+
+**Simpan hasil ke file:** Append ke `analysis_notes.md` dengan heading `## Hook Library`
+**Output ke chat:** `[✓ Step 6 selesai]` + tampilkan 3 hook template terbaik
 
 ---
 
-## STEP 7 — DEEP ANALYSIS (Session 5: Structure DNA)
+### STEP 7 — Structure DNA (Session 5)
 
 Baca `threads_dump.md`.
 
 Tugas:
-- Petakan format yang sering dipakai:
-  - list/bullet
-  - storytelling
-  - opini pendek
-  - Q&A
-  - myth-busting
-  - how-to
+- Petakan format: list/bullet, storytelling, opini pendek, Q&A, myth-busting, how-to
 - Untuk tiap format:
-  - ciri struktur (jumlah baris tipikal, panjang baris, ritme)
+  - ciri struktur (jumlah baris, panjang, ritme)
   - sinyal CTA (jenis penutup)
-  - 2 contoh post yang merepresentasikan (kutipan singkat, bukan full)
-- Jika metrics tersedia:
-  - sebutkan format yang tampak perform lebih tinggi (berdasarkan contoh top posts)
+  - 2 contoh post (kutipan singkat)
+- Jika metrics tersedia: sebutkan format yang perform lebih tinggi
 
 Output harus actionable: "DNA" yang bisa ditiru.
 
+**Simpan hasil ke file:** Append ke `analysis_notes.md` dengan heading `## Structure DNA`
+**Output ke chat:** `[✓ Step 7 selesai]` + sebutkan 2 format dominan
+
 ---
 
-## STEP 8 — DEEP ANALYSIS (Session 6: Tone & Diction Map)
+### STEP 8 — Tone & Diction Map (Session 6)
 
 Baca `threads_dump.md`.
 
 Tugas:
 - Profil tone: formal/santai, tegas/reflektif, humor/sarkas, optimis/skeptis.
 - Diction: pilihan kata khas, campur Indo/English, "signature phrases".
-- Tanda baca & emoji: pola penggunaan (kalau ada).
-- Buat "Do & Don't" (min 10 poin) untuk meniru gaya TANPA meniru isi.
-- Tambahkan "anti-plagiarism rules" singkat.
+- Tanda baca & emoji: pola penggunaan.
+- "Do & Don't" (min 10 poin) untuk meniru gaya TANPA meniru isi.
+- "Anti-plagiarism rules" singkat.
 
-Sertakan 8–12 contoh kata/frasa khas (bukan kalimat panjang).
+**Simpan hasil ke file:** Append ke `analysis_notes.md` dengan heading `## Tone & Diction Map`
+**Output ke chat:** `[✓ Step 8 selesai]` + sebutkan 4–5 frasa khas
 
 ---
 
 ## STEP 9 — FINAL MERGE (Comprehensive Report)
 
-Gabungkan hasil dari STEP 3 sampai STEP 8 menjadi 1 laporan komprehensif yang rapi.
+> **TOKEN SAFETY — URUTAN WAJIB:**
+> 1. Tulis knowledge update ke research-knowledge.md **PERTAMA**
+> 2. Tulis report.md **KEDUA**
+> 3. Output ke chat **TERAKHIR** (ringkas saja)
 
-Struktur report wajib:
-1) Executive Summary (5 bullet)
-2) Content Pillars (tema utama + bukti kutipan)
-3) Deepest Tensions (Top 3 pain points/tension + trigger emosinya)
-4) Hook Library (10 template + contoh)
-5) Structure DNA (format terbaik + rekomendasi panjang/ritme/CTA)
-6) Tone & Style Guide (do/don't + diction map)
-7) Repurpose Rules (5–8 aturan praktis)
+### 9A — Knowledge Update DULU (WAJIB SEBELUM REPORT)
 
-Simpan sebagai file: `report.md`
-
-### 🧠 Knowledge Update (Analysis)
-Setelah report selesai, **WAJIB append** ke `{baseDir}/research-knowledge.md`:
+Berdasarkan hasil analisis di `analysis_notes.md`, **LANGSUNG append** ke `{baseDir}/research-knowledge.md`:
 
 ```
 ### Analysis — @{handle} — {YYYY-MM-DD}
@@ -288,9 +304,26 @@ Setelah report selesai, **WAJIB append** ke `{baseDir}/research-knowledge.md`:
 ---
 ```
 
-Output ke chat:
-- Konfirmasi `report.md` dibuat
+### 9B — Buat Report
+
+Baca `analysis_notes.md` dan gabungkan menjadi 1 laporan komprehensif.
+
+Struktur report wajib:
+1) Executive Summary (5 bullet)
+2) Content Pillars (tema utama + bukti kutipan)
+3) Deepest Tensions (Top 3 pain points/tension + trigger emosinya)
+4) Hook Library (10 template + contoh)
+5) Structure DNA (format terbaik + rekomendasi panjang/ritme/CTA)
+6) Tone & Style Guide (do/don't + diction map)
+7) Repurpose Rules (5–8 aturan praktis)
+
+Simpan sebagai file: `report.md`
+
+### 9C — Output ke Chat (TERAKHIR, RINGKAS)
+
+- `[✓ Step 9 selesai — knowledge updated + report.md dibuat]`
 - Tampilkan 10 bullet "language bank" (frasa yang bisa dipakai untuk hook/copy)
+- **Jangan dump seluruh report ke chat** — user bisa baca di file
 
 ---
 
@@ -427,6 +460,14 @@ Solusi:
 - Pakai Browser Automation untuk render halaman
 - Jika tetap diblok:
   - sarankan integrasi Decodo/anti-bot (jika tersedia di environment user)
+
+## Output terpotong / knowledge base tidak terupdate
+Solusi:
+- Ini terjadi karena LLM kehabisan output token sebelum sempat write ke file
+- Pastikan ikuti aturan TOKEN SAFETY: file write DULU, chat output TERAKHIR
+- Step 3–8 menyimpan analisis ke `analysis_notes.md` (bukan ke chat)
+- Step 9 menulis knowledge update SEBELUM generate report
+- Jika masih terpotong: minta user lanjutkan dari step terakhir yang sukses
 
 ## Output terlalu panjang / boros token
 Solusi:
