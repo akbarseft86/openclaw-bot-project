@@ -155,34 +155,49 @@ async def ask_ai(user_id: int, user_message: str) -> str:
     add_to_history(user_id, "user", user_message)
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     messages.extend(get_history(user_id))
-    
+
     model_key, (model_name, api_url, api_key, model_id) = get_user_model(user_id)
-    
-    try:
-        async with httpx.AsyncClient(timeout=60.0) as client:
-            response = await client.post(
-                api_url,
-                headers={
-                    "Authorization": "Bearer " + api_key,
-                    "Content-Type": "application/json"
-                },
-                json={
-                    "model": model_id,
-                    "messages": messages,
-                    "temperature": 0.7,
-                    "max_tokens": 4096
-                }
-            )
-            response.raise_for_status()
-            data = response.json()
-            reply = data["choices"][0]["message"]["content"]
-            add_to_history(user_id, "assistant", reply)
-            return reply
-    except httpx.TimeoutException:
-        return "⏱ Timeout — {} tidak merespon.".format(model_name)
-    except Exception as e:
-        log.error("AI API error (%s): %s", model_name, e)
-        return "❌ Error ({}): {}".format(model_name, e)
+
+    # Kimi K2 and other large models may need more time; use 180s timeout
+    request_timeout = httpx.Timeout(connect=10.0, read=180.0, write=10.0, pool=5.0)
+    max_retries = 2
+
+    for attempt in range(1, max_retries + 2):
+        try:
+            async with httpx.AsyncClient(timeout=request_timeout) as client:
+                response = await client.post(
+                    api_url,
+                    headers={
+                        "Authorization": "Bearer " + api_key,
+                        "Content-Type": "application/json"
+                    },
+                    json={
+                        "model": model_id,
+                        "messages": messages,
+                        "temperature": 0.7,
+                        "max_tokens": 4096
+                    }
+                )
+                response.raise_for_status()
+                data = response.json()
+                reply = data["choices"][0]["message"]["content"]
+                add_to_history(user_id, "assistant", reply)
+                return reply
+        except httpx.TimeoutException:
+            if attempt <= max_retries:
+                wait = 2 ** (attempt - 1)  # 1s, 2s
+                log.warning("AI timeout (%s) attempt %d/%d, retry in %ds",
+                            model_name, attempt, max_retries + 1, wait)
+                await asyncio.sleep(wait)
+                continue
+            return "⏱ Timeout — {} tidak merespon setelah {} percobaan.".format(
+                model_name, max_retries + 1)
+        except httpx.ConnectError as e:
+            log.error("AI connect error (%s): %s", model_name, e)
+            return "❌ Gagal konek ke {} API. Cek koneksi VPS.".format(model_name)
+        except Exception as e:
+            log.error("AI API error (%s): %s", model_name, e)
+            return "❌ Error ({}): {}".format(model_name, e)
 
 # === SEND LONG MESSAGE ========================================================
 async def send_long(update, text):
